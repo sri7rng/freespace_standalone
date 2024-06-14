@@ -1,0 +1,45 @@
+version: '3.6'
+services:
+  xflow_dev:
+    build:
+      args:
+        HOME: ${HOME:?HOME has to be set to the home of the current user}
+        HTTP_PROXY: ${HTTP_PROXY}
+        HTTPS_PROXY: ${HTTPS_PROXY}
+        USER_GID: ${USER_GID:?USER_GID has to be set to the gid of the current user;USER_GID=$$(id -g)}
+        USER_NAME: ${USER_NAME:?USER_NAME has to be set to the name of the current user;USER_NAME=$$(whoami)}
+        USER_UID: ${USER_UID:?USER_UID has to be set to the uid of the current user;USER_UID=$$(id -u)}
+        WORKSPACE: ${WORKSPACE:?WORKSPACE has to be set to the root of the current xflow workspace}
+      context: ${WORKSPACE}
+      dockerfile: ${WORKSPACE}/Dockerfile
+      network: host
+    shm_size: '2gb'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [ gpu ]
+    #entrypoint: ${WORKSPACE}/.build/user-image/entrypoint.sh
+    environment:
+      - HTTP_PROXY
+      - HTTPS_PROXY
+      - https_proxy
+      - http_proxy
+      - REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+    image: standalone-inference-${USER_NAME}
+    container_name: standalone-inference-${USER_NAME}
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
+    user: ${USER_UID}:${USER_GID}
+    volumes:
+      - type: bind
+        source: ${WORKSPACE}/..
+        target: ${WORKSPACE}/..
+      - type: bind
+        source: /etc/ssl/certs
+        target: /etc/ssl/certs
+      - type: bind
+        source: /data/mf4_conversion
+        target: ${WORKSPACE}/data/mf4_conversion

@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            //"python": "/home/sri7rng/git/inference_chain_standalone/venv/bin/python",
+            "request": "launch",
+            "program": "${file}",
+            
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python Debugger: convert onnx2trt",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/app/onnx2trt.py",
+            "console": "integratedTerminal",
+            "args": [ "--path_to_onnx_models", "/app/data/mf4_conversion/new_set",
+            "--output_path", "/app",
+            "--allow_convert_without_calibrator", "true"
+            ],
+        },
+    ]
+}

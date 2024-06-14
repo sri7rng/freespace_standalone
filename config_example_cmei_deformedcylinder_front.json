@@ -1,0 +1,105 @@
+{
+    "source": {
+        "intrinsics": {
+            "type": "CMei",
+            "SN": "example",
+            "image_dimensions": [
+                808.0,
+                640.0
+            ],
+            "focal_length": [
+                587.8287678626803,
+                587.2680053710938
+            ],
+            "principal_point": [
+                407.2760314941406,
+                322.0073547363281
+            ],
+            "max_angle": 195.0,
+            "max_radius": 0.823739,
+            "radial_coefficients": [
+                0.08228474855422974,
+                -0.06925702095031738,
+                -0.45612555742263794,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "tangential_coefficients": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "spherical_projection_factor": 1.5055373907089233,
+            "skew": 0.0,
+            "embedded_lines": [
+                0,
+                0
+            ],
+            "roi_offset": [
+                0,
+                0
+            ],
+            "roi_dimensions": [
+                808.0,
+                640.0
+            ]
+        },
+        "extrinsics": {
+            "translation": [
+                3.787489414215088,
+                0.02966202050447464,
+                0.5110742449760437
+            ],
+            "rotation": [
+                -0.006137995831027085,
+                -0.004108778981594515,
+                -0.035192357592754346,
+                0.9993532613193007
+            ]
+        }
+    },
+    "target": {
+        "intrinsics": {
+            "type": "DeformedCylinder",
+            "image_dimensions": [
+                768.0,
+                768.0
+            ],
+            "focal_length": [
+                229.185,
+                229.185
+            ],
+            "principal_point": [
+                394.0,
+                303.06
+            ],
+            "cut_angle_upper": -20.0,
+            "cut_angle_lower": 20.0,
+            "use_legacy_model": false
+        },
+        "extrinsics": {
+            "translation": [
+                3.827291117079707,
+                0.005743799023041363,
+                0.6734512109538522
+            ],
+            "rotation": [
+                0,
+                0,
+                0,
+                1
+            ]
+        }
+    }
+}

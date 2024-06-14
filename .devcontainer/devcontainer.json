@@ -1,0 +1,41 @@
+{
+    "name": "inferencekinit_chain_standalone",
+    "workspaceFolder": "/app/",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+    "mounts": ["source=/data/mf4_conversion,target=/app/data/mf4_conversion,type=bind,consistency=cached"],
+    "image": "vdeepacrprod.azurecr.io/xflow_release_base:latest",
+    //"image":"inference_chain/inference-build:latest",
+    "runArgs": [
+        "--env-file",
+        "${localWorkspaceFolder}/.devcontainer/.env",
+        "--gpus",
+        //"device=1",
+        "all",
+        "--privileged",
+		"--network",
+		"host"
+    ],
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.mypyEnabled": true,
+                "python.linting.mypyPath": "/usr/local/bin/mypy",
+                "python.linting.pycodestyleEnabled": true,
+                "python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
+                "python.linting.pydocstyleEnabled": true,
+                "python.linting.pydocstylePath": "/usr/local/bin/pydocstyle",
+                "python.linting.pylintEnabled": true,
+                "python.linting.pylintPath": "/usr/local/bin/pylint"
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    },
+    "remoteUser": "root"
+}
